@@ -1,27 +1,27 @@
 @extends('layout.app')
 
 @section('content')
-<h2>Liste des livres</h2>
+<h2>Liste des genres</h2>
     <table border="1">
         <thead>
             <tr>
                 <th>id</th>
-                <th>Noms</th>
+                <th>Genres</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($books as $book)
+            @foreach ($genres as $genre)
                 <tr>
-                    <td>{{ $book->id }}</td>
-                    <td>{{ $book->name }}</td>
+                    <td>{{ $genre->id }}</td>
+                    <td>{{ $genre->genre }}</td>
                     <td>
-                        <a href="{{ route('book.view', $book->id) }}">Voir</a>
-                        <a href="{{ route('book.edit', $book->id) }}">Modifier</a>
-                        <form action="{{ route('book.destroy') }}" method="POST">
+                        <a href="{{ route('genre.view', $genre->id) }}">Voir</a>
+                        <a href="{{ route('genre.edit', $genre->id) }}">Modifier</a>
+                        <form action="{{ route('genre.destroy') }}" method="POST">
                             @method('delete')
                             @csrf
-                            <input type="hidden" name="book_id" value="{{ $book->id }}">
+                            <input type="hidden" name="genre_id" value="{{ $genre->id }}">
                             <button type="submit">Supprimer</button>
                         </form>
                     </td>
